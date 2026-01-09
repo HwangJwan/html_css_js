@@ -9,13 +9,14 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         async function getPost() {
-            const id=document.getElementById("post_num").value;
-            const result1 = await axios.get("ec2-15-165-205-49.ap-northeast-2.compute.amazonaws.com/"+id);
+            const input=document.getElementById("post_num").value;
+            const result1 = await axios.get("https://jsonplaceholder.typicode.com/posts/"+input);
             const jsonData=result1.data;
             console.log(jsonData);
             document.getElementById("id").innerHTML=jsonData.id;
             document.getElementById("title").innerHTML=jsonData.title;
-            document.getElementById("contents").innerHTML=jsonData.contents;
+            document.getElementById("content").innerHTML=jsonData.body;
+            document.getElementById("userId").innerHTML=jsonData.userId;
         }
     </script>
 </head>
@@ -42,7 +43,8 @@
         <table class="table">
             <tr><td>ID</td><td id="id"></td></tr>
             <tr><td>제목</td><td id="title"></td></tr>
-            <tr><td>내용</td><td id="contents"></td></tr>
+            <tr><td>내용</td><td id="content"></td></tr>
+            <tr><td>USERID</td><td id="userId"></td></tr>
         </table>
     </div>
 </body>
